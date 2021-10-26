@@ -24,18 +24,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 
 public class paintingTask extends AppCompatActivity implements View.OnClickListener {
     Integer npp, delete_or_edit_or_insert;
     String date, doc_num, zakaz, uchastok, fio;
-    EditText eNPP;
-    EditText eDocNum;
-    EditText eDate;
-    Spinner spUchastok;
-    Spinner spMaster;
-    EditText eZakaz;
-    Button btnSave;
-    Button btnCancel;
+    EditText eNPP,eDocNum,eDate,eZakaz;
+    Spinner spUchastok,spMaster;
+    Button btnSave,btnCancel,btnTableMarks;
     DBHelper dbHelper = new DBHelper(this);
     ContentValues cv = new ContentValues();
     Calendar dateForView = Calendar.getInstance();
@@ -48,8 +44,10 @@ public class paintingTask extends AppCompatActivity implements View.OnClickListe
 
         btnSave = (Button) findViewById(R.id.bPaintingTaskSave);
         btnCancel = (Button) findViewById(R.id.bPaintingTaskCancel);
+        btnTableMarks = (Button) findViewById(R.id.bTableMarks);
         btnSave.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
+        btnTableMarks.setOnClickListener(this);
 
         Intent intent = getIntent();
         delete_or_edit_or_insert = intent.getIntExtra("delete_or_edit_or_insert", 2);
@@ -113,6 +111,11 @@ public class paintingTask extends AppCompatActivity implements View.OnClickListe
                 // кнопка Cancel
                 finish();
                 break;
+            case R.id.bTableMarks:
+                // кнопка Таблица марок
+                showPtContent();
+
+                break;
 
             case R.id.eDate:
 //                Преобразовать дату из вьюшки в формат Date
@@ -139,6 +142,17 @@ public class paintingTask extends AppCompatActivity implements View.OnClickListe
 
                 break;
         }
+    }
+
+    public void showPtContent(){
+        //Функция для отображения формы с таблицей марок для "Задания на покраску"
+        Intent intent = new Intent(this, ptContent.class);
+        if (delete_or_edit_or_insert != 2) {
+            intent.putExtra("npp", (Integer) npp);
+        }
+        intent.putExtra("delete_or_edit_or_insert", delete_or_edit_or_insert);
+
+        startActivity(intent);
     }
 
     // отображаем диалоговое окно для выбора даты
