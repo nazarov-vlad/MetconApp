@@ -235,8 +235,8 @@ public class PaintingTasks extends AppCompatActivity implements View.OnClickList
         String sql = "select pt.pt_id,pt.pt_date, pt.pt_number,  pt.pt_zakaz, u.uch_name, m.ms_name  " +
                 " from PaintingTasks pt left join Uchastok u on pt.uch_id=u.uch_id left join Mastera m on pt.ms_id=m.ms_id";
         // создаем объект для создания и управления версиями БД
-        DBHelper dbHelper = new DBHelper(this);
-        ContentValues cv = new ContentValues();
+//        DBHelper dbHelper = new DBHelper(this);
+//        ContentValues cv = new ContentValues();
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cursor c = db.rawQuery(sql, new String[]{});
 

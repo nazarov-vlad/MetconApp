@@ -1,9 +1,12 @@
 package ru.metcon.metconapp;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import java.util.HashMap;
 
 class DBHelper extends SQLiteOpenHelper {
     final String LOG_TAG = "myLogs";
@@ -25,6 +28,19 @@ class DBHelper extends SQLiteOpenHelper {
                 + "orders_name integer);");
         //Заполняем локальную таблицу заказов (временно, до написания процедуры синхронизации)
         db.execSQL("INSERT INTO Orders (Orders_name) VALUES ('002669')");
+        String orders_id ="";
+
+        String sql = "select max(orders_id) from orders";
+        Cursor c = db.rawQuery(sql, new String[]{});
+        if (c != null) {
+            if (c.moveToFirst()) {
+                do {
+                    orders_id = c.getString(0);
+                } while (c.moveToNext());
+            }
+            c.close();
+        }
+
 
         // Создаем таблицу чертежей
         db.execSQL("create table draft ("
@@ -32,7 +48,7 @@ class DBHelper extends SQLiteOpenHelper {
                 + "orders_id   integer NOT NULL REFERENCES orders(orders_id),"
                 + "draft_name integer);");
         //Заполняем локальную таблицу чертежей (временно, до написания процедуры синхронизации)
-        db.execSQL("INSERT INTO Draft (drf_name) VALUES ('002669_КМД-51-10')");
+        db.execSQL("INSERT INTO Draft (orders_id,drf_name) VALUES ("+orders_id+"'002669_КМД-51-10')");
 
         // Создаем таблицу марок
         db.execSQL("create table marks ("
