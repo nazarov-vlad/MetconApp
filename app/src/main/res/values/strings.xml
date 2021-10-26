@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">MetconApp</string>
+    <string name="bCMP">Цех маляро-погрузки</string>
+    <string name="bPaintingTasks">Задания на покраску</string>
+    <string name="bAdd">Добавить</string>
+    <string name="bEdit">Изменить</string>
+    <string name="bDelete">Удалить</string>
+    <string name="bSave">Сохранить</string>
+    <string name="bCancel">Отменить</string>
+    <string name="bSend">Отправить</string>
+    <string name="bTableMarks">Таблица марок</string>
+    <string name="miSettings">Настройки</string>
+    <string name="miUsers">Пользователи</string>
+    <string name="miSUBD">База данных</string>
+    <string name="eNPP">Номер по порядку</string>
+    <string name="eDocNum">Номер документа</string>
+
+    <string name="deleting">Удаление</string>
+    <string name="delete_data">Удалить данные?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="cancel">Отмена</string>
+    <string name="is_deleted">Данные удалены</string>
+
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/main_settings"
+        android:orderInCategory="100"
+        android:title="@string/miSettings" />
+
+    <item
+        android:id="@+id/main_users"
+        android:orderInCategory="100"
+        android:title="@string/miUsers"/>
+
+    <item
+        android:id="@+id/main_SUBD"
+        android:orderInCategory="100"
+        android:title="@string/miSUBD"/>
+
+    <item
+        android:id="@+id/main_JSON"
+        android:orderInCategory="100"
+        android:title="JSON"/>
+
+</menu>

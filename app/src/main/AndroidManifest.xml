@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ru.metcon.metconapp">
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:usesCleartextTraffic="true"
+        android:icon="@mipmap/ic_launcher_metcon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_metcon"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MetconApp">
+        <activity
+            android:name=".Web_Queryes"
+            android:exported="true" />
+        <activity
+            android:name=".paintingTask"
+            android:exported="true" />
+        <activity
+            android:name=".SUBD_Table_View"
+            android:exported="true"
+            android:label="Просмотр содержимого таблицы" />
+        <activity
+            android:name=".SUBD_Main"
+            android:exported="true"
+            android:label="Управление базой данных" />
+        <activity
+            android:name=".PaintingTasks"
+            android:exported="true"
+            android:label="Задания на покраску" />
+        <activity
+            android:name=".CMP"
+            android:exported="true"
+            android:label="Цех маляро погрузки" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="ЧЗМК App">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
