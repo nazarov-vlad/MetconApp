@@ -131,7 +131,6 @@ public class paintingTask extends AppCompatActivity implements View.OnClickListe
                             dateForView.get(Calendar.MONTH),
                             dateForView.get(Calendar.DAY_OF_MONTH))
                             .show();
-
 //                    android.text.format.DateFormat df = new android.text.format.DateFormat();
 //                    String str = "" + df.format("dd.MM.yyyy", dateForView);
 //                    eDate.setText(str);

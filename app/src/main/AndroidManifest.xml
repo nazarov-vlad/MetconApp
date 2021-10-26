@@ -14,12 +14,15 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ptContent"
+            android:label="Таблица марок"
             android:exported="true" />
         <activity
             android:name=".Web_Queryes"
+            android:label="Web запросы"
             android:exported="true" />
         <activity
             android:name=".paintingTask"
+            android:label="Задание на покраску"
             android:exported="true" />
         <activity
             android:name=".SUBD_Table_View"
@@ -36,7 +39,7 @@
         <activity
             android:name=".CMP"
             android:exported="true"
-            android:label="Цех маляро погрузки" />
+            android:label="Цех маляро-погрузки" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
