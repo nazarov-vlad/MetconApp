@@ -209,6 +209,7 @@ public class paintingTask extends AppCompatActivity implements View.OnClickListe
         String ms_id = getTableId("select ms_id from mastera where ms_name='" + spMaster.getSelectedItem().toString() + "'");
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        //Расшифровка значений переменной
         // delete_or_edit_or_insert=1 -> Update, delete_or_edit_or_insert=2 -> Insert
         String sql = "";
 
