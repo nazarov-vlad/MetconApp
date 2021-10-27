@@ -11,7 +11,7 @@ import java.util.HashMap;
 class DBHelper extends SQLiteOpenHelper {
     final String LOG_TAG = "myLogs";
     private static final String DATABASE_NAME = "metcon.db"; // название бд
-    private static final int SCHEMA = 9; // версия базы данных
+    private static final int SCHEMA = 10; // версия базы данных
 
 
     public DBHelper(Context context) {
@@ -31,7 +31,7 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Orders (Orders_name) VALUES ('002570')");
         db.execSQL("INSERT INTO Orders (Orders_name) VALUES ('002669')");
 
-        String orders_id = GetMaxId("select max(orders_id) from orders",db);
+        String orders_id = GetMaxId("select min(orders_id) from orders",db);
 
          // Создаем таблицу чертежей
         db.execSQL("create table drafts ("
@@ -152,7 +152,7 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Uchastok");
         db.execSQL("DROP TABLE IF EXISTS Mastera");
         db.execSQL("DROP TABLE IF EXISTS marks");
-        db.execSQL("DROP TABLE IF EXISTS draft");
+        db.execSQL("DROP TABLE IF EXISTS drafts");
         db.execSQL("DROP TABLE IF EXISTS Orders");
 
         onCreate(db);
