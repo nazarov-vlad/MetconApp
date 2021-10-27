@@ -11,7 +11,7 @@ import java.util.HashMap;
 class DBHelper extends SQLiteOpenHelper {
     final String LOG_TAG = "myLogs";
     private static final String DATABASE_NAME = "metcon.db"; // название бд
-    private static final int SCHEMA = 8; // версия базы данных
+    private static final int SCHEMA = 9; // версия базы данных
 
 
     public DBHelper(Context context) {
@@ -27,6 +27,8 @@ class DBHelper extends SQLiteOpenHelper {
                 + "orders_id integer primary key autoincrement not null,"
                 + "orders_name integer);");
         //Заполняем локальную таблицу заказов (временно, до написания процедуры синхронизации)
+        db.execSQL("INSERT INTO Orders (Orders_name) VALUES ('002400')");
+        db.execSQL("INSERT INTO Orders (Orders_name) VALUES ('002570')");
         db.execSQL("INSERT INTO Orders (Orders_name) VALUES ('002669')");
 
         String orders_id = GetMaxId("select max(orders_id) from orders",db);

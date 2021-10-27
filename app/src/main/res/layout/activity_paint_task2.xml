@@ -58,15 +58,13 @@
         app:layout_constraintTop_toBottomOf="@+id/eDocNum"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <EditText
-        android:id="@+id/eZakaz"
+    <Spinner
+        android:id="@+id/spZakaz"
         android:layout_width="160dp"
         android:layout_height="48dp"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="Заказ"
+        android:hint="Мастер"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eDate"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -78,7 +76,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:hint="Мастер"
-        app:layout_constraintStart_toEndOf="@+id/eZakaz"
+        app:layout_constraintStart_toEndOf="@+id/spZakaz"
         app:layout_constraintTop_toBottomOf="@+id/spUchastok"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -90,7 +88,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/bTableMarks"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eZakaz" />
+        app:layout_constraintTop_toBottomOf="@+id/spZakaz" />
 
     <Button
         android:id="@+id/bPaintingTaskSave"

@@ -29,8 +29,8 @@ import java.util.Map;
 public class paintingTask extends AppCompatActivity implements View.OnClickListener {
     Integer npp, delete_or_edit_or_insert;
     String date, doc_num, zakaz, uchastok, fio;
-    EditText eNPP,eDocNum,eDate,eZakaz;
-    Spinner spUchastok,spMaster;
+    EditText eNPP,eDocNum,eDate;
+    Spinner spUchastok,spMaster,spZakaz;
     Button btnSave,btnCancel,btnTableMarks;
     DBHelper dbHelper = new DBHelper(this);
     ContentValues cv = new ContentValues();
@@ -78,9 +78,10 @@ public class paintingTask extends AppCompatActivity implements View.OnClickListe
         eDate.setFocusable(false);
         spUchastok = (Spinner) findViewById(R.id.spUchastok);
         spMaster = (Spinner) findViewById(R.id.spMaster);
-        eZakaz = (EditText) findViewById(R.id.eZakaz);
+        spZakaz = (Spinner) findViewById(R.id.spZakaz);
         fillSpinner("select uch_name from uchastok", uchastok, R.id.spUchastok);
         fillSpinner("select ms_name from Mastera", fio, R.id.spMaster);
+        fillSpinner("select orders_name from orders", zakaz, R.id.spZakaz);
 
         switch (delete_or_edit_or_insert) {
             case (0): //Delete
@@ -91,7 +92,7 @@ public class paintingTask extends AppCompatActivity implements View.OnClickListe
                 eDocNum.setText(doc_num);
                 eDate.setText(date);
 
-                eZakaz.setText(zakaz);
+//                eZakaz.setText(zakaz);
                 break;
             case (2): //Insert
 
@@ -220,6 +221,7 @@ public class paintingTask extends AppCompatActivity implements View.OnClickListe
         //Получим ID из спиннеров
         String uch_id = getTableId("select uch_id from uchastok where uch_name='" + spUchastok.getSelectedItem().toString() + "'");
         String ms_id = getTableId("select ms_id from mastera where ms_name='" + spMaster.getSelectedItem().toString() + "'");
+        String orders_id = getTableId("select orders_id from orders where orders_name='" + spZakaz.getSelectedItem().toString() + "'");
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         //Расшифровка значений переменной
@@ -230,10 +232,10 @@ public class paintingTask extends AppCompatActivity implements View.OnClickListe
             sql = "INSERT INTO PaintingTasks (pt_number,pt_date,uch_id,ms_id,pt_zakaz) VALUES " +
                     "('" + eDocNum.getText()
                     + "','" + eDate.getText()
-                    + "'," + uch_id + "," + ms_id + ",'" + eZakaz.getText() + "')";
+                    + "'," + uch_id + "," + ms_id + "," + orders_id + ")";
         } else if (delete_or_edit_or_insert == 1) {
             sql = "UPDATE PaintingTasks set pt_number=" + eDocNum.getText() + ",pt_date='" + eDate.getText() + "',uch_id=" + uch_id
-                    + ",ms_id=" + ms_id + ",pt_zakaz='" + eZakaz.getText() + "' where pt_id=" + eNPP.getText();
+                    + ",ms_id=" + ms_id + ",orders_id='" + orders_id + "' where pt_id=" + eNPP.getText();
         }
 
         if (sql != "") {
