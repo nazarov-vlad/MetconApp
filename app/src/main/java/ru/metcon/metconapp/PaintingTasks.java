@@ -239,6 +239,7 @@ public class PaintingTasks extends AppCompatActivity implements View.OnClickList
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cursor c = db.rawQuery(sql, new String[]{});
 
+
 //        // упаковываем данные в понятную для адаптера структуру
         Map<String, Object> m;
 

@@ -148,7 +148,7 @@ public class paintingTask extends AppCompatActivity implements View.OnClickListe
         //Функция для отображения формы с таблицей марок для "Задания на покраску"
         Intent intent = new Intent(this, ptContent.class);
         if (delete_or_edit_or_insert != 2) {
-            intent.putExtra("npp", (Integer) npp);
+            intent.putExtra("npp", (String) Integer.toString(npp));
         }
         intent.putExtra("delete_or_edit_or_insert", delete_or_edit_or_insert);
 

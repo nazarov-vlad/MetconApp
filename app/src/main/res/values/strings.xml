@@ -14,6 +14,8 @@
     <string name="miSUBD">База данных</string>
     <string name="eNPP">Номер по порядку</string>
     <string name="eDocNum">Номер документа</string>
+    <string name="delete_record">Удалить запись?</string>
+
 
     <string name="deleting">Удаление</string>
     <string name="delete_data">Удалить данные?</string>
