@@ -5,31 +5,37 @@
     android:id="@+id/lvData"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:descendantFocusability="blocksDescendants"
-    android:orientation="vertical">
+    android:descendantFocusability="blocksDescendants">
 
-    <TextView
-        android:id="@+id/twDraft"
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_height="match_parent"
+        android:divider="@color/black"
+        android:showDividers="middle">
 
-    <TextView
-        android:id="@+id/twMark"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        <TextView
+            android:id="@+id/twDraft"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:text="TextView" />
 
-    <TextView
-        android:id="@+id/twValue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        <TextView
+            android:id="@+id/twMark"
+            android:layout_width="195dp"
+            android:layout_height="match_parent"
+            android:text="TextView" />
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="10dp"-->
-<!--        android:background="?android:attr/panelFullBackground"-->
-<!--        android:orientation="horizontal" />-->
+        <TextView
+            android:id="@+id/twValue"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="TextView" />
+    </TableRow>
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="10dp"-->
+    <!--        android:background="?android:attr/panelFullBackground"-->
+    <!--        android:orientation="horizontal" />-->
 
 </LinearLayout>
