@@ -10,13 +10,17 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class ptContent extends AppCompatActivity {
@@ -40,17 +44,53 @@ public class ptContent extends AppCompatActivity {
         startManagingCursor(cursor);
 
         // формируем столбцы сопоставления
-        String[] from = new String[]{"drafts_name","marks_name", "ptc_value"};
-        int[] to = new int[]{R.id.twDraft, R.id.twMark,R.id.twValue};
+        String[] from = new String[]{"drafts_name", "marks_name", "ptc_value"};
+        int[] to = new int[]{R.id.twDraft, R.id.twMark, R.id.twValue};
 
         // создаем адаптер и настраиваем список
         scAdapter = new SimpleCursorAdapter(this, R.layout.ptcontent_item, cursor, from, to);
         lvData = (ListView) findViewById(R.id.lvData);
         lvData.setAdapter(scAdapter);
 
+//        lvData.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
+
         // добавляем контекстное меню к списку
         registerForContextMenu(lvData);
 
+        lvData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            protected void onListItemClick(ListView l, View v, int pos, long id) {
+                Toast.makeText(getApplicationContext(),
+                        "onItemSelected = " + Integer.toString(pos), Toast.LENGTH_SHORT).show();
+                Log.d("MyLog", "onItemSelected: position = " + pos + ", id = " + id);
+            }
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(getApplicationContext(),
+                        "onItemSelected = " + Integer.toString(position), Toast.LENGTH_SHORT).show();
+                Log.d("MyLog", "onItemSelected: position = " + position + ", id = " + id);
+            }
+        });
+
+        lvData.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                Toast.makeText(getApplicationContext(),
+                        "onItemSelected = " + Integer.toString(position), Toast.LENGTH_SHORT).show();
+                Log.d("MyLog", "onItemSelected: position = " + position + ", id = " + id);
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+                Toast.makeText(getApplicationContext(),
+                        "onNothingSelected ", Toast.LENGTH_SHORT).show();
+                Log.d("MyLog", "onNothingSelected:  ");
+            }
+        });
+
+
+        Toast.makeText(getApplicationContext(),
+                "onCreate ", Toast.LENGTH_SHORT).show();
     }
 
     public void onCreateContextMenu(ContextMenu menu, View v,
@@ -73,9 +113,9 @@ public class ptContent extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
-    private Cursor getAllData(){
-        String sql = "select d.drafts_name,m.marks_name, ptc.ptc_value " +
-                " from PaintingTasksCnt ptc left join Drafts d on ptc.drafts_id=d.drafts_id left join Marks m on ptc.marks_id=m.marks_id "+
+    private Cursor getAllData() {
+        String sql = "select ptc.ptc_id as _id, d.drafts_name,m.marks_name, ptc.ptc_value " +
+                " from PaintingTasksCnt ptc left join Drafts d on ptc.drafts_id=d.drafts_id left join Marks m on ptc.marks_id=m.marks_id " +
                 " where ptc.pt_id=" + pt_id;
 
         SQLiteDatabase sqd = dbHelper.getWritableDatabase();
